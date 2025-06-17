@@ -19,7 +19,8 @@ def collect_all_dexes():
     for file in sorted(glob.glob("jettons/*.yaml")):
         if file.endswith(DEXES_FILE_NAME):
             continue
-        temp.append(yaml.safe_load(open(file)))
+        with open(file, encoding='utf-8') as f:
+            temp.append(yaml.safe_load(f))
 
     for item in temp:
         if isinstance(item, list):
